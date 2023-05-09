@@ -11,7 +11,7 @@ export class UserController {
     return await this.userService.getAllUsers();
   }
 
-  @Get('/:iduser')
+  @Get(':iduser')
   async getUser(@Param('iduser') iduser: number): Promise<User> {
     return await this.userService.getUser(iduser);
   }
@@ -30,7 +30,7 @@ export class UserController {
     );
   }
 
-  @Delete('/:iduser')
+  @Delete(':iduser')
   async deleteUser(@Param('iduser') iduser: number): Promise<DeleteResult> {
     return await this.userService.deleteUser(iduser);
   }
