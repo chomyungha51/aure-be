@@ -6,12 +6,12 @@ import { DeleteResult } from 'typeorm';
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
-  @Get('list')
+  @Get()
   async getAllUsers(): Promise<User[]> {
     return await this.userService.getAllUsers();
   }
 
-  @Get(':iduser')
+  @Get('/:iduser')
   async getUser(@Param('iduser') iduser: number): Promise<User> {
     return await this.userService.getUser(iduser);
   }
@@ -30,7 +30,7 @@ export class UserController {
     );
   }
 
-  @Delete(':iduser')
+  @Delete('/:iduser')
   async deleteUser(@Param('iduser') iduser: number): Promise<DeleteResult> {
     return await this.userService.deleteUser(iduser);
   }
