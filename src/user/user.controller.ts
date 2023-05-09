@@ -6,7 +6,7 @@ import { DeleteResult } from 'typeorm';
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
-  @Get('/list')
+  @Get('list')
   async getAllUsers(): Promise<User[]> {
     return await this.userService.getAllUsers();
   }
