@@ -3,18 +3,17 @@ import { UserService } from './user.service';
 import { User } from './entity/user.entity';
 import { DeleteResult } from 'typeorm';
 
-@Controller('/user')
+@Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
+  @Get('/list')
+  async getAllUsers(): Promise<User[]> {
+    return await this.userService.getAllUsers();
+  }
 
   @Get(':iduser')
   async getUser(@Param('iduser') iduser: number): Promise<User> {
     return await this.userService.getUser(iduser);
-  }
-
-  @Get('/list')
-  async getAllUsers(): Promise<User[]> {
-    return await this.userService.getAllUsers();
   }
 
   @Post()
