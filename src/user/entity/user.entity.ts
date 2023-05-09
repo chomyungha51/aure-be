@@ -1,10 +1,11 @@
-import { Entity, Column, Index } from 'typeorm';
+import { Entity, Column, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-@Index(['userId', 'email'])
+@Index(['iduser', 'nickname', 'password'])
 export class User {
-  @Column({ unique: true })
-  iduser: string;
+  @PrimaryGeneratedColumn()
+  @Column({ primary: true, nullable: false, unique: true })
+  iduser?: number;
 
   @Column({ nullable: false })
   nickname: string;
